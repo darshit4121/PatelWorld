@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Dashboard</title>
+
+    <link rel="apple-touch-icon" href="~/app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap-extended.css">
+    <!-- <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css"> -->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+    <!-- END: Page CSS-->
+    <!-- Start: Page CSS-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/plugins/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/assets/plugins/css/DataTables/jquery.dataTables.min.css">
+    <link href="~/assets/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/assets/plugins/css/timepicker/bootstrap-timepicker.css">
+ 
+    <link rel="stylesheet" href="~/assets/css/select2/select2.min.css">
+    <link href="~/assets/datepicker/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/assets/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/css/toastr.css" rel="stylesheet" />
+    <link href="~/assets/css/intlTelInput.css" rel="stylesheet" media="screen">
+    <!-- END: Page CSS-->
+    <!-- BEGIN: Custom CSS-->
+    
+    <link href="~/assets/css/menu.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+
+ 
+    <!-- END: Custom CSS-->
+
+
+
+</head>
+<!-- END: Head-->
+<!-- BEGIN: Body-->
+
+<body class="vertical-menu-modern 2-columns fixed-navbar menu-expanded " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav justify-content-center">
+                    <li class="nav-item mobile-menu d-lg-none mr-auto">
+                        <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="/admin/dashboard">
+                            <img class="brand-logo" alt="" src="~/app-assets/images/logo/logo.svg">
+                        </a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+                        <li class="nav-item nav-search">
+                            <div class="header-breadcrumb">
+                                <h4 class="fw_6 mb-0"></h4>
+                              
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Header-->
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+        <!-- left sidebar Menu Start -->
+        <div class="left-sidebar">
+            <div class="sidebar-menubar scrollable-container">
+                <ul class="ul_menu list-unstyled">
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="/admin/dashboard" class="sidebar-menu-icon">
+                                <i class="la la-home"></i>
+                                <span class="sidebar-menu-name">Dashboard</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="/admin/master/CustomerList" class="sidebar-menu-icon">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="sidebar-menu-name">Customer List</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="/admin/Subscription" class="sidebar-menu-icon">
+                                <i class="fa fa-usd" aria-hidden="true"></i>
+                                <span class="sidebar-menu-name">Subscription</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="/admin/Ticket" class="sidebar-menu-icon">
+                                <i class="fa fa-ticket" aria-hidden="true"></i>
+                                <span class="sidebar-menu-name">Ticket List</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="/admin/master/LoanList" class="sidebar-menu-icon">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                <span class="sidebar-menu-name">Loan List</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="sidebar-tooltip">
+                            <a href="Javascript:void(0);" class="sidebar-menu-icon">
+                                <i class="la la-briefcase"></i>
+                                <span class="sidebar-menu-name">Master</span>
+                            </a>
+                        </div>
+                        <div class="sidebar-submenu">
+                            <ul class="sidebar-menu-item-popover list-unstyled">
+                                <li><a href="/admin/master/LoanType">LoanType </a></li>
+                                <li><a href="/admin/master/RequestType">RequestType </a></li>
+                                <li><a href="/admin/master/LoanVendor">Loan Vendor </a></li>
+                                <li><a href="/admin/master/AddUser">Add User </a></li>
+                             
+                            </ul>
+                        </div>
+                    </li>
+                  
+
+                </ul>
+            </div>
+            <div class="sidebar-detailsview">
+                <ul class="list-inline m-0">
+                    <li class="user-menu">
+                        <div class="dropdown profile-dropdown">
+                            <div class="dropdown-toggle hide-after" data-toggle="dropdown">
+                                <img src="/images/profile/@ViewContext.HttpContext.Session.GetString("ProfilePhoto")" ProfilePhoto")" class="img-fluid" alt="">
+                                <span class="status-indicator"></span>
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-content settings-menu-body">
+                                    <div class="settings-menu-top-content">
+
+
+                                        <div class="user-settings-menu">
+                                            <div class="Workspace-setting-title">
+                                                <span class="Workspace-avatar mr-2 bg1">
+                                                    <span class="Workspace-avatar-text">
+                                                        <img src="/images/profile/@ViewContext.HttpContext.Session.GetString("ProfilePhoto")"ProfilePhoto")" alt="User Profile Photo">
+                                                    </span>
+                                                </span>
+                                                <div class="">
+                                                    <p class="m-0 line-height-2 fs_12">Admin</p>
+                                                </div>
+                                            </div>
+                                            <div class="Workspace-setting-list">
+                                                <ul class="m-0 list-inline">
+                                                    <li>
+                                                        <a href="/admin/master/MangeProfile">Manage Profile</a>
+                                                    </li>
+                                                 
+                                                    <li>
+                                                        <a href="/Login/Logout">Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="user-settings-menu-apps">
+                                        <div class="">
+                                            <p class="m-0 text-uppercase fs_12 opacity_05"> Download Apps: </p>
+                                        </div>
+                                        <div class="">
+                                            <ul class="m-0 list-inline">
+                                               
+                                                <li class="list-inline-item">
+                                                    <a href="" data-toggle="tooltip" data-placement="top" title="Android">
+                                                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.44 78.3">
+                                                            <path d="M55.18.47c1.51,1.05,1.57,1.9.24,3.24L51.67,7.47a19.19,19.19,0,0,1,8.15,15.66H20.56A19.15,19.15,0,0,1,28.7,7.46L25,3.71c-1.33-1.34-1.27-2.19.24-3.24H26a13.08,13.08,0,0,1,1.26,1c1,1,2,2,3,3s1.11,1.09,2.52.5c.33-.13.66-.26,1-.36a20.63,20.63,0,0,1,14.73.77.71.71,0,0,0,.92-.21c1.21-1.23,2.43-2.46,3.67-3.66a14.4,14.4,0,0,1,1.32-1ZM32,17.46A2.43,2.43,0,0,0,34.44,15a2.44,2.44,0,1,0-4.88,0A2.43,2.43,0,0,0,32,17.46Zm16.33,0a2.42,2.42,0,0,0,2.46-2.39A2.44,2.44,0,1,0,45.93,15,2.42,2.42,0,0,0,48.34,17.46Z" transform="translate(-7.46 -0.47)" />
+                                                            <path d="M20.6,26.49H59.8V58.72c0,2.6-1.12,3.7-3.74,3.71H53.31c0,.34,0,.64,0,.93,0,3.36,0,6.73,0,10.09a5.05,5.05,0,0,1-3.94,5.21c-3.07.66-5.84-1.77-5.87-5.18s0-6.68,0-10v-1H36.92v.88c0,3.36,0,6.73,0,10.09a5.06,5.06,0,0,1-4.18,5.24,4.84,4.84,0,0,1-5.54-4.24c-.14-2.69-.08-5.4-.1-8.1V62.42c-1.19,0-2.32,0-3.46,0a3,3,0,0,1-3-2.38,5.28,5.28,0,0,1-.09-1.13q0-15.87,0-31.73C20.57,27,20.59,26.77,20.6,26.49Z" transform="translate(-7.46 -0.47)" />
+                                                            <path d="M17.27,42.8c0,3.72,0,7.44,0,11.16a5,5,0,0,1-4.36,5.14,4.94,4.94,0,0,1-5.32-4,7.94,7.94,0,0,1-.12-1.29q0-11,0-22a5,5,0,0,1,3.45-5A4.83,4.83,0,0,1,17.21,31c.13,3.59.05,7.19.06,10.78Z" transform="translate(-7.46 -0.47)" />
+                                                            <path d="M72.9,42.85c0,3.7,0,7.39,0,11.09a4.9,4.9,0,0,1-9.76.88c0-.3,0-.61,0-.92q0-11.08,0-22.17a5,5,0,0,1,3.26-4.95,4.94,4.94,0,0,1,6.54,4.91C72.92,35.41,72.9,39.13,72.9,42.85Z" transform="translate(-7.46 -0.47)" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- left sidebar Menu End -->
+    </div>
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light navbar-border navbar-shadow">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span class="float-md-left d-block d-md-inline-block">
+                Copyright &copy; <span id="copyright-year"></span>
+                <a class="text-bold-800 grey darken-2" href="https://www.keyconcepts.co.in/" target="_blank">KeyConcepts</a>
+            </span>
+            <span class="float-md-right d-none d-lg-block">
+                Desinged & Developed By <a class="text-bold-800 grey darken-2" href="https://keyconcepts.co.in/" target="_blank">KeyConcepts</a>
+                <span id="scroll-top"></span>
+            </span>
+        </p>
+    </footer>
+    <!-- END: Footer-->
+   
+    <!-- Profile QR Modal -->
+    <div class="modal" id="profileqr">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">QR Code</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="modal-qr">
+                                <img src="assets/images/qrcode.png" class="img-fluid" alt="user QR">
+                                <p>Code: <span class="text-color">12586</span></p>
+                            </div>
+                            <div class="mt-10">
+                                <p class="">Note: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer justify-content-center">
+                    <div class="add-balance-btn text-center">
+                        <a href="" class="softo-solid-btn softo-solid-btn-cancel" style="background: transparent;color: #202020;">
+                            <i class="fa fa-print" aria-hidden="true"></i> Print
+                        </a>
+                        <a href="" class="softo-solid-btn ml-10">
+                            <i class="fa fa-download" aria-hidden="true"></i> Download
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="~/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="~/app-assets/js/core/app-menu.js"></script>
+    <script src="~/app-assets/js/core/app.js"></script>
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Page JS-->
+
+    <script type="text/javascript" src="~/app-assets/js/scripts/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/js/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/js/timepicker/bootstrap-timepicker.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/select2/select2.min.js"></script>
+
+    <script src="~/assets/js/intlTelInput-jquery.min.js"></script>
+    <script src="~/assets/js/mobilecode/utils.js"></script>
+   
+    <!-- END: Page JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="~/assets/js/scripts.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/assets/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/assets/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/toastr.js"></script>
+    @RenderSection("scripts", required: false)
+    <!-- END: Page JS-->
+
+    <script>
+    
+    </script>
+
+    <script>
+        $('.single-datepickers').daterangepicker({
+            singleDatePicker: true,
+            opens: 'center'
+        });
+    </script>
+
+    <script>
+        $('.emergency-options-box ul li .Alert-box').click(function () {
+            $(this).toggleClass('active');
+        });
+    </script>
+</body>
+<!-- END: Body-->
+
+</html>

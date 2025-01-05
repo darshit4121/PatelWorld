@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatelWorld", "PatelWorld\PatelWorld.csproj", "{953FFF9A-8384-44FC-9BE1-9F13040F9264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatelWorld_API", "PatelWorld_API\PatelWorld_API.csproj", "{49D5DE95-012A-4116-B248-503B3DF9729A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{953FFF9A-8384-44FC-9BE1-9F13040F9264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953FFF9A-8384-44FC-9BE1-9F13040F9264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953FFF9A-8384-44FC-9BE1-9F13040F9264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953FFF9A-8384-44FC-9BE1-9F13040F9264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D5DE95-012A-4116-B248-503B3DF9729A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D5DE95-012A-4116-B248-503B3DF9729A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D5DE95-012A-4116-B248-503B3DF9729A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D5DE95-012A-4116-B248-503B3DF9729A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B75C37B3-9060-47EA-B0D0-0D23B555AFDF}
+	EndGlobalSection
+EndGlobal

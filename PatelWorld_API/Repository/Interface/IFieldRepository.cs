@@ -9,7 +9,7 @@ namespace PatelWorld_API.Repository.Interface
         List<TblFieldsOptions> GetAllFieldsOptions();
         CommonResponseModel DeleteField(CommonEditdelete obj);
         TblFields GetSingleField(CommonEditdelete obj);
-     //   CommonResponseModel CreateUpdateByMapping(TblFields field);
+        CommonResponseModel CreateUpdateByMapping(TblFields field);
         CommonResponseModel InsertUpdateFieldOptions(TblFieldsOptions model);
         CommonResponseModel DeleteFieldOptionsbyIdandFieldId(TblFieldsOptions idandfieldid);
         List<TblFieldsOptions> GetAllFieldOptions(int FieldId);

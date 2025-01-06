@@ -122,72 +122,80 @@ namespace PatelWorld_API.Repository
             return res;
         }
 
-        //public CommonResponseModel CreateUpdateByMapping(TblFields field)
-        //{
-        //    CommonResponseModel model = new CommonResponseModel();
-           
+        public CommonResponseModel CreateUpdateByMapping(TblFields field)
+        {
+            CommonResponseModel model = new CommonResponseModel();
+            DBHelper db = new DBHelper(_configuration);
+            var addedFieldId = 0;
 
-        //    var addedFieldId = 0;
-        //    if (field.Id > 0)
-        //    {
-        //        var exists = _context.TblFields.Where(z => z.Id != field.Id && z.BusinessId == field.BusinessId && z.Name.ToLower() == field.Name.ToLower() && z.IsActive == true && z.IsDelete != true).FirstOrDefault();
-        //        var fieldData = _context.TblFields.Where(z => z.Id == field.Id && z.IsDelete != true && z.IsActive == true).FirstOrDefault();
-        //        if (exists != null)
-        //        {
-        //            model.IsSuccess = false;
-        //            model.Message = "Field " + field.Name + " already exists";
-        //            return (model);
-        //        }
-        //        else
-        //        {
-        //            fieldData.ModifiedBy = field.ModifiedBy;
-        //            fieldData.ModifiedDate = field.ModifiedDate;
-        //            fieldData.IsAdminDefault = field.IsAdminDefault;
-        //            fieldData.BusinessId = field.BusinessId;
-        //            fieldData.Name = field.Name;
-        //            fieldData.Datatype = field.Datatype;
-        //            fieldData.Description = field.Description;
-        //            fieldData.IsActive = field.IsActive;
-        //            fieldData.IsDelete = field.IsDelete;
-        //            _context.TblFields.Update(fieldData);
+            try
+            {
+                if (field.Id > 0)
+                {
+                    var existsQuery = "SELECT COUNT(1) FROM TblFields WHERE Id != @Id AND LOWER(Name) = @Name AND IsActive = 1 AND IsDelete != 1";
+                    var existsParams = new object[] { "@Id", field.Id, "@Name", field.Name.ToLower() };
+                    var exists = (int)db.ExecuteScalar(existsQuery, existsParams).Result;
 
-        //            _context.SaveChanges();
-        //        }
+                    if (exists > 0)
+                    {
+                        model.success = false;
+                        model.message = "Field " + field.Name + " already exists";
+                        return model;
+                    }
 
-        //    }
-        //    else
-        //    {
-        //        TblFields data = new TblFields();
-        //        var exists = _context.TblFields.Where(z => z.Name.ToLower() == field.Name.ToLower() && z.BusinessId == field.BusinessId && z.IsActive == true && z.IsDelete != true).FirstOrDefault();
-        //        if (exists != null)
-        //        {
-        //            model.IsSuccess = false;
-        //            model.Message = "Field " + field.Name + " already exists";
-        //            return (model);
-        //        }
-        //        if (exists == null)
-        //        {
-        //            data.IsAdminDefault = field.IsAdminDefault;
-        //            data.BusinessId = field.BusinessId;
-        //            data.Name = field.Name;
-        //            data.Datatype = field.Datatype;
-        //            data.Description = field.Description;
-        //            data.CreatedDate = field.CreatedDate;
-        //            data.IsActive = field.IsActive;
-        //            data.IsDelete = field.IsDelete;
+                    var updateQuery = "UPDATE TblFields SET ModifiedBy = @ModifiedBy, ModifiedDate = @ModifiedDate, Name = @Name, Datatype = @Datatype, Description = @Description, IsActive = @IsActive, IsDelete = @IsDelete WHERE Id = @Id";
+                    var updateParams = new object[]
+                    {
+                "@ModifiedBy", field.ModifiedBy,
+                "@ModifiedDate", field.ModifiedDate,
+                "@Name", field.Name,
+                "@Datatype", field.Datatype,
+                "@Description", field.Description,
+                "@IsActive", field.IsActive,
+                "@IsDelete", field.IsDelete,
+                "@Id", field.Id
+                    };
+                    db.ExecuteNonQuery(updateQuery, updateParams).Wait();
+                }
+                else
+                {
+                    var existsQuery = "SELECT COUNT(1) FROM TblFields WHERE LOWER(Name) = @Name AND IsActive = 1 AND IsDelete != 1";
+                    var existsParams = new object[] { "@Name", field.Name.ToLower() };
+                    var exists = (int)db.ExecuteScalar(existsQuery, existsParams).Result;
 
-                   
+                    if (exists > 0)
+                    {
+                        model.success = false;
+                        model.message = "Field " + field.Name + " already exists";
+                        return model;
+                    }
 
-        //            _context.TblFields.Add(data);
-        //            _context.SaveChanges();
-        //        }
-        //        addedFieldId = data.Id;
-        //    }
-        //    model.IsSuccess = true;
-        //    model.Message = "success";
-        //    model.data = addedFieldId;
-        //    return (model);
-        //}
+                    var insertQuery = "INSERT INTO TblFields (Name, Datatype, Description, CreatedDate, IsActive, IsDelete) OUTPUT INSERTED.Id VALUES (@Name, @Datatype, @Description, @CreatedDate, @IsActive, @IsDelete)";
+                    var insertParams = new object[]
+                    {
+                "@Name", field.Name,
+                "@Datatype", field.Datatype,
+                "@Description", field.Description,
+                "@CreatedDate", field.CreatedDate,
+                "@IsActive", field.IsActive,
+                "@IsDelete", field.IsDelete
+                    };
+                    addedFieldId = (int)db.ExecuteScalar(insertQuery, insertParams).Result;
+                }
+
+                model.success = true;
+                model.message = "success";
+                model.data = addedFieldId;
+            }
+            catch (Exception ex)
+            {
+                model.success = false;
+                model.message = ex.Message;
+            }
+
+            return model;
+        }
+
         public CommonResponseModel InsertUpdateFieldOptions(TblFieldsOptions model)
         {
             CommonResponseModel res = new CommonResponseModel();

@@ -28,134 +28,125 @@ namespace PatelWorld.Controllers
         
         public IActionResult Index()
         {
-            bool myAction = MainCheck();
-            if (!myAction)
-                return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
+            //bool myAction = MainCheck();
+            //if (!myAction)
+            //    return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
             var ListingRecord = _fieldRepository.GetAllFiledAdmin();
             ViewBag.List = ListingRecord;
 
             return View(new Fieldfilter() { });
         }
 
-        //[Route("admin/master/field/addfield")]
-        //public IActionResult AddField(CommonEditdelete obj)
-        //{
-        //    bool myAction = MainCheck();
-        //    if (!myAction)
-        //        return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
+        [Route("admin/master/field/addfield")]
+        public IActionResult AddField(CommonEditdelete obj)
+        {
+            bool myAction = MainCheck();
+            if (!myAction)
+                return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
 
-        //    var AllFieldsOptions = _fieldRepository.GetAllFieldsOptions();
-        //    var alloptionsvalue = AllFieldsOptions.Where(z => z.IsActive == true).ToList();
-        //    ViewBag.AllOpionsValue = alloptionsvalue;
-        //    ViewBag.Fieldoptions = _fieldRepository.GetAllFieldOptions(obj.Id);
-        //    if (obj != null && obj.Id > 0)
-        //    {
-        //        var data = _fieldRepository.GetSingleField(obj);
-        //        return View(data);
-        //    }
+            var AllFieldsOptions = _fieldRepository.GetAllFieldsOptions();
+          
+            ViewBag.AllOpionsValue = AllFieldsOptions;
+            ViewBag.Fieldoptions = _fieldRepository.GetAllFieldOptions(obj.Id);
+            if (obj != null && obj.Id > 0)
+            {
+                var data = _fieldRepository.GetSingleField(obj);
+                return View(data);
+            }
 
-        //    return View(new TblFields());
-        //}
-        //[Route("admin/master/field/viewfield")]
-        //public IActionResult viewField(CommonEditdelete obj)
-        //{
-        //    if (obj != null && obj.Id > 0)
-        //    {
-        //        var data = _fieldRepository.GetSingleField(obj);
-        //        return View(data);
-        //    }
-        //    return View(new TblFields());
-        //}
-        //public void getField()
-        //{
-        //    List<TblFields> response = _fieldRepository.GetAllField();
-        //    List<SelectListItem> items = new List<SelectListItem>();
-        //    foreach (var res in response)
-        //    {
-        //        items.Add(new SelectListItem
-        //        {
-        //            Text = res.Datatype.ToString(),
-        //            Value = res.Id.ToString()
-        //        });
-        //    }
-        //    ViewBag.datatypeList = items;
-        //}
-        //[HttpPost]
-        //public IActionResult SaveField(TblFields addfield, List<TblFieldsOptions> Fieldoptions)
-        //{
-        //    addfield.IsAdminDefault = true;
-        //    addfield.IsActive = true;
-        //    addfield.IsDelete = false;
-        //    addfield.CreatedDate = DateTime.Now;
-        //    if (addfield.Id > 0)
-        //    {
-        //        addfield.ModifiedDate = DateTime.Now;
-        //    }
-        //    var result = _fieldRepository.CreateUpdateByMapping(addfield);
+            return View(new TblFields());
+        }
 
-        //    if (result.IsSuccess && Fieldoptions != null)
-        //    {
-        //        foreach (var option in Fieldoptions)
-        //        {
-        //            if (result.data > 0)
-        //            {
-        //                option.FieldId = result.data;
-        //                option.IsActive = true;
-        //                option.IsDelete = false;
-        //                option.CreatedDate = DateTime.Now;
-        //                if (option.Id > 0)
-        //                {
-        //                    option.ModifiedDate = DateTime.Now;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                option.FieldId = addfield.Id;
-        //                option.IsActive = true;
-        //                option.IsDelete = false;
-        //                option.CreatedDate = DateTime.Now;
-        //                if (option.Id > 0)
-        //                {
-        //                    option.ModifiedDate = DateTime.Now;
-        //                }
-        //            }
-        //            var optionResult = _fieldRepository.InsertUpdateFieldOptions(option);
-        //        }
-        //    }
-        //    var data = Url.Action("Index", "Field");
-        //    if (result.IsSuccess == true)
-        //    {
-        //        result.Message = data;
-        //    }
-        //    var json = JsonConvert.SerializeObject(result);
-        //    return json;
-        //}
+        [Route("admin/master/field/viewfield")]
+        public IActionResult viewField(CommonEditdelete obj)
+        {
+            if (obj != null && obj.Id > 0)
+            {
+                var data = _fieldRepository.GetSingleField(obj);
+                return View(data);
+            }
+            return View(new TblFields());
+        }
+        public void getField()
+        {
+            List<TblFields> response = _fieldRepository.GetAllFiledAdmin();
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach (var res in response)
+            {
+                items.Add(new SelectListItem
+                {
+                    Text = res.Datatype.ToString(),
+                    Value = res.Id.ToString()
+                });
+            }
+            ViewBag.datatypeList = items;
+        }
 
 
-        //[HttpPost]
-        //public IActionResult DeleteField(CommonEditdelete obj)
-        //{
-        //    var result = _fieldRepository.DeleteField(obj);
-        //    if (result.IsSuccess == true)
-        //    {
-        //        return "success";
-        //    }
-        //    else
-        //    {
-        //        return result.Message;
-        //    }
-        //}
+        [HttpPost]
+        public string SaveField(TblFields addfield, List<TblFieldsOptions> Fieldoptions)
+        {
+        
+            addfield.IsActive = true;
+            addfield.IsDelete = false;
+            addfield.CreatedDate = DateTime.Now;
+            if (addfield.Id > 0)
+            {
+                addfield.ModifiedDate = DateTime.Now;
+            }
+            var result = _fieldRepository.CreateUpdateByMapping(addfield);
 
-        //[HttpPost]
-        //public IActionResult DeleteFieldOptions(List<TblFieldsOptions> DeleteFieldOptions)
-        //{
-        //    foreach (var option in DeleteFieldOptions)
-        //    {
-        //        var result = _fieldRepository.DeleteFieldOptionsbyIdandFieldId(option);
-        //    }
-        //    var json = JsonConvert.SerializeObject("");
-        //    return json;
-        //}
+            if (result.success && Fieldoptions != null)
+            {
+                foreach (var option in Fieldoptions)
+                {
+                    if (result.data > 0)
+                    {
+                        option.FieldId = result.data;
+                    
+                    }
+                    else
+                    {
+                        option.FieldId = addfield.Id;
+                 
+                    }
+                    var optionResult = _fieldRepository.InsertUpdateFieldOptions(option);
+                }
+            }
+            var data = Url.Action("Index", "Field");
+            if (result.success == true)
+            {
+                result.message = data;
+            }
+            var json = JsonConvert.SerializeObject(result);
+            return json;
+        }
+
+
+        [HttpPost]
+        public string DeleteField(CommonEditdelete obj)
+        {
+            var result = _fieldRepository.DeleteField(obj);
+            if (result.success == true)
+            {
+                return "success";
+            }
+            else
+            {
+                return result.message;
+            }
+        }
+
+        [HttpPost]
+        public string DeleteFieldOptions(List<TblFieldsOptions> DeleteFieldOptions)
+        {
+            foreach (var option in DeleteFieldOptions)
+            {
+                var result = _fieldRepository.DeleteFieldOptionsbyIdandFieldId(option);
+            }
+            var json = JsonConvert.SerializeObject("");
+            return json;
+        }
 
 
 

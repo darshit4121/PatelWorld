@@ -21,5 +21,18 @@
             Exhibitor = 10
         }
 
+        public enum DataType
+        {
+            text = 1,
+            number = 2,
+            email = 3,
+            date = 4,
+            textarea = 5,
+            dropdown = 6,
+            camera = 7,
+            checkbox = 8,
+            radiobutton = 9
+        }
+
     }
 }

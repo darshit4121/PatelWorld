@@ -28,16 +28,16 @@ namespace PatelWorld.Controllers
         
         public IActionResult Index()
         {
-            //bool myAction = MainCheck();
-            //if (!myAction)
-            //    return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
+            bool myAction = MainCheck();
+            if (!myAction)
+                return Redirect(_configuration["OnlineLink:ClientAdminLogin"].ToString());
             var ListingRecord = _fieldRepository.GetAllFiledAdmin();
             ViewBag.List = ListingRecord;
 
             return View(new Fieldfilter() { });
         }
 
-        [Route("admin/master/field/addfield")]
+     
         public IActionResult AddField(CommonEditdelete obj)
         {
             bool myAction = MainCheck();
@@ -57,7 +57,7 @@ namespace PatelWorld.Controllers
             return View(new TblFields());
         }
 
-        [Route("admin/master/field/viewfield")]
+    
         public IActionResult viewField(CommonEditdelete obj)
         {
             if (obj != null && obj.Id > 0)
@@ -93,6 +93,7 @@ namespace PatelWorld.Controllers
             if (addfield.Id > 0)
             {
                 addfield.ModifiedDate = DateTime.Now;
+                addfield.ModifiedBy = Convert.ToInt32(HttpContext.Session.GetString(appEnums.Session.UserID.ToString()));
             }
             var result = _fieldRepository.CreateUpdateByMapping(addfield);
 

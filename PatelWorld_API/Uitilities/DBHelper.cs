@@ -43,6 +43,63 @@ namespace PatelWorld_API.Utilities
             }
         }
 
+        public List<DataTable> ExecuteProcedureWithMultipleTables(string PROC_NAME, params object[] parameters)
+        {
+            try
+            {
+                if (parameters.Length % 2 != 0)
+                    throw new ArgumentException("Wrong number of parameters sent to procedure. Expected an even number.");
+
+                List<SqlParameter> filters = new List<SqlParameter>();
+                string query = "EXEC " + PROC_NAME;
+
+                for (int i = 0; i < parameters.Length; i += 2)
+                {
+                    filters.Add(new SqlParameter(parameters[i] as string, parameters[i + 1] == null ? "" : parameters[i + 1]));
+                }
+
+                return QueryMultiple(query, filters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private static List<DataTable> QueryMultiple(string query, IList<SqlParameter> parameters)
+        {
+            try
+            {
+                List<DataTable> tables = new List<DataTable>();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters.ToArray());
+                        }
+
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            do
+                            {
+                                DataTable dt = new DataTable();
+                                dt.Load(reader);
+                                tables.Add(dt);
+                            } while (!reader.IsClosed && reader.NextResult());
+                        }
+                    }
+                }
+                return tables;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ExecuteQuery(string query, params object[] parameters)
         {
             try

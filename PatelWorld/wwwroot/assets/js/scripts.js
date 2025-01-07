@@ -5,25 +5,27 @@
 * Version                   : 1.0                                                                      *
 * Design and Developed by   :                                                                          * 
 *-------------------------------------------------------------------------------------------------------
-NOTE: This is main stylesheet of template, This file contains the styling for the actual Template.*/
+NOTE: This is main stylesheet of template, This file contains the styling for the actual Template.*/ 
 
 
 (function(window, undefined) {
-    'use strict';
+  'use strict';
+    var PUS = {};  
+    /*
+    NOTE:
+    ------
+    PLACE HERE YOUR OWN JAVASCRIPT CODE IF NEEDED
+    WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR JAVASCRIPT CODE PLEASE CONSIDER WRITING YOUR SCRIPT HERE.  */
+ 
 
-    var PUS = {};
+     // :: Copyright Year  
 
-    $("[data-toggle=tooltip").tooltip();
-
-    $('.select-select2').select2({});
-
-
-    $(".ul_menu li").on("click", function() {
+    $(".ul_menu li").on("click", function () {
         $(".ul_menu li").removeClass("ul_menu_active");
         $(this).addClass("ul_menu_active");
     });
 
-    $(document).mouseup(function(e) {
+    $(document).mouseup(function (e) {
         var container = $(".ul_menu li");
         // if the target of the click isn't the container nor a descendant of the container
         if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -31,58 +33,49 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
         }
     });
 
-    // :: Copyright Year   
+
     var currentYear = (new Date).getFullYear();
-    $("#copyright-year").text((new Date).getFullYear());
+    $("#copyright-year").text((new Date).getFullYear()); 
 
-    $(".filter-panel").click(function() {
-        $(".right-panel-filter").removeClass("filter-active");
+    $(".filter-panel").click(function(){
+        $(".right-panel-filter").removeClass("filter-active"); 
     });
 
-    $(".filter-click").click(function() {
-        $(".right-panel-filter").addClass("filter-active");
+    $(".filter-click").click(function(){
+        $(".right-panel-filter").addClass("filter-active"); 
     });
 
-    $(".panel-overlay").click(function() {
-        $(".right-panel-filter").removeClass("filter-active");
-    });
-
-
-    $('.daterange-right').daterangepicker({
-        opens: 'left'
-    });
-
-    $('.single-datepicker').datepicker({
-        format: 'mm/dd/yyyy',
-        startDate: '02/20/2018',
-    });
-
-    $('.single-timepicker').timepicker('setTime', '12:45 AM');
-
-
-    // $(".access-more").click(function(){
-    //     $(".Department-actions").toggle(); 
-    // }); 
-
-    $(".alert-email-add a").click(function() {
-        $(".added-Employee-box").toggle();
-    });
-
-    $(".mob-sidebar a").click(function() {
+    $(".panel-overlay").click(function(){
+        $(".right-panel-filter").removeClass("filter-active"); 
+    }); 
+    $(".mob-sidebar a").click(function () {
         $(".settings-left-sidebar").toggle();
     });
 
+    $(document).mouseup(function (e) {
+        if (window.innerWidth < 991) {
+            var container = $(".mob-sidebar");
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $(".settings-left-sidebar").hide();
+            }
+        }
+        
+    });
 
-
-
+    $(document).scroll(function (e) {
+        if (window.innerWidth < 991) {
+            $(".settings-left-sidebar").hide();
+        }
+    });
 
     /*==========================================
             :: carousel
-    ==========================================*/
-    PUS.carousel = function() {
+    ==========================================*/          
+    PUS.carousel = function () {
         var owlslider = jQuery(".totalrecords");
         if (owlslider.length > 0) {
-            owlslider.each(function() {
+            owlslider.each(function () {
                 var $this = $(this),
                     $items = ($this.data('items')) ? $this.data('items') : 1,
                     $loop = ($this.attr('data-loop')) ? $this.data('loop') : false,
@@ -130,51 +123,32 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
         }
     }
 
-
-    // new Sortable(FieldsDisplay, {
-    //     animation: 150,
-    //     ghostClass: 'blue-background-class'
-    // });
+    PUS.PanelFlag = function () {
+        $(".flags-panel").click(function () {
+            $(".right-panel-flags").removeClass("flags-active");
+        });
+        $(".toolbar-filter").click(function () {
+            $(".right-panel-flags").addClass("flags-active");
+        });
+        $(".panel-overlay").click(function () {
+            $(".right-panel-flags").removeClass("flags-active");
+        });
+    };
 
 
 
     /*==========================================
             :: Document Ready
     ==========================================*/
-    $(document).ready(function() {
-        PUS.carousel() //carousel 
+    $(document).ready(function () {
+        PUS.carousel(), //carousel 
+            PUS.PanelFlag()
     });
-
-    /*-------------------------------------------------------------
-     :: window Ready
-     ---------------------------------------------------------------*/
-    $(window).ready(function() {
-        $('.data-tables').DataTable({
-            "scrollX": true
-        });
-        $('.data-tables-filters').DataTable({
-            "scrollX": true,
-            "searching": false,
-            "paging": false,
-            "info": false,
-            "ordering": false
-        });
-    });
-
-    // Url 
-    var url = window.location.pathname;
-    var activePage = url.substring(url.lastIndexOf('/') + 1);
-    $('.ul_menu li .sidebar-tooltip a').each(function() {
-        var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1);
-        if (activePage == linkPage) {
-            $(this).closest(".sidebar-tooltip").parent().addClass("page-active");
-        }
-    });
-
-    $('.sidebar-submenu .sidebar-menu-item-popover li a').each(function() {
-        var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1);
-        if (activePage == linkPage) {
-            $(this).parent().parent().parent().parent().addClass("page-active");
-        }
-    });
+    
 })(window);
+
+ 
+ 
+ 
+
+ 

@@ -117,7 +117,7 @@ $(document).ready(function () {
         }
         var isValid = $("#frmField").valid();
         if (isValid) {
-            StartLoader($("#btnFieldSave")[0]);
+      //      StartLoader($("#btnFieldSave")[0]);
             var fieldoptionsdata = [];  
             var data = document.getElementsByClassName('fields_added'); 
             var numberOfRows = data.length;
@@ -141,19 +141,19 @@ $(document).ready(function () {
                 type: "POST",
                 data: { addfield: user, Fieldoptions: fieldoptionsdata },
                 success: function (data) {
-                    StopLoading();
+                   // StopLoading();
                     data = JSON.parse(data);
                     if (data.IsSuccess == false) {
-                        StopLoader($("#btnFieldSave")[0]);
+                      //  StopLoader($("#btnFieldSave")[0]);
                         toastr.warning(data.Message, 'Warning');
                     } else {
-                        StopLoader($("#btnFieldSave")[0]);
+                      //  StopLoader($("#btnFieldSave")[0]);
                         toastr.success(' Field saved successfully', 'success');
-                        setTimeout(() => { window.location = data.Message; }, 800);
+                        setTimeout(() => { window.location.href = "/Field"    }, 800);
                     }
                 },
                 error: function (errormessage) {
-                    StopLoader($("#btnFieldSave")[0]);
+                 //   StopLoader($("#btnFieldSave")[0]);
                     toastr.error(errormessage.responseText.toString(), 'error');
                 }
             });

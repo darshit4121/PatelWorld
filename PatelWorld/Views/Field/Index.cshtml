@@ -4,135 +4,118 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="card-title mb-0 flex-grow-1">Form Fields</h4>
-            </div>
-        </div>
-    </div>
-    <div class="mt-4">
-        <div class="card rounded-3">
-            <div class="card-body">
-                <div class="report-table">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="float-lg-end">
-
-                                <div class="intable-add-btn">
-                                    <div class="d-flex">
-                                        <div class="me-2">
-                                            @if (TempData["IsAdd"] != null && Convert.ToBoolean(TempData["IsAdd"]) || TempData["IsEdit"] != null && Convert.ToBoolean(TempData["IsEdit"]))
-                                            {
-                                                <div class="intable-add-btn me-2"><a href="/FormField/addfield" class="btn btn-primary d-flex btn-sm"><i class="ri-add-line fs-5 lh-1"></i><span class="d-none d-sm-block ms-1">Add Field</span></a></div>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="float-end">
-                                    <div class="d-flex">
-                                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filter"><a href="#" class="btn btn-sm btn-icon btn-dark" data-bs-toggle="offcanvas" data-bs-target="#FilterBoxSlide"><i class="bi bi-funnel"></i></a></span>
-
-                                    </div>
-                                </div>
-                            </div>
+<div class="content-wrapper">
+    <div class="content-header row">
+        <div class="content-header-left col-md-12 col-12">
+            <div class="row align-items-end">
+                <div class="col-md-12 text-right">
+                    <div class="Visitor-Desk-code-area text-end mb-10">
+                        <div class="Addvisitors ml-1">
+                            <a href="/Field/AddField" class="softo-solid-btn" data-toggle="tooltip" title="" data-original-title="Add Department">
+                                Add Field
+                            </a>
                         </div>
                     </div>
-                    <table id="Field-table" class="table nowrap" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th width="30%">Name</th>
-                                <th width="20%">Datatype</th>
-                                <th width="35%">Description</th>
-                                <th width="15%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (ViewBag.List != null && ViewBag.List.Count > 0)
-                            {
-                                @foreach (var item in ViewBag.List)
-                                {
-
-                                    <tr>
-                                        <td>@item.Name </td>
-                                        <td>@item.Datatype</td>
-
-                                        @{
-                                            string Msg = "";
-                                            if (item.Description != null)
-                                            {
-                                                if (item.Description.Length >= 50)
-                                                {
-
-                                                    Msg = item.Description.Substring(0, 50) + "...";
-
-                                                }
-                                                else
-                                                {
-                                                    Msg = item.Description;
-                                                }
-                                            }
-
-                                        }
-                                        <td>@Msg</td>
-                                        <td>
-                                            @if (TempData["IsAdd"] != null && Convert.ToBoolean(TempData["IsAdd"]) || TempData["IsEdit"] != null && Convert.ToBoolean(TempData["IsEdit"]))
-                                            {
-                                                @*@if (item.IsName == true || item.IsPhone == true)
-                                                    {
-                                                        <a class="icon-round remove " title="Edit"><i class="la la-ban"></i> </a>
-                                                    }
-                                                    else
-                                                    {*@
-                                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
-                                                    <a href="/FormField/addfield?Id=@item.Id" class="btn btn-sm btn-icon mr-1 float-left btn-info"><i class="ri-pencil-line"></i></a>
-                                                </span>
-                                                //}
-                                            }
-
-                                            @if (TempData["IsDelete"] != null && Convert.ToBoolean(TempData["IsDelete"]))
-                                            {
-                                                @*@if (item.IsName == true || item.IsPhone == true)
-                                                    {
-                                                        <a onclick="DeleteItemConfirm(@item.Id)" class=" icon-round danger delete" data-toggle="modal" data-target="#delete" title="Delete"><i class="la la-trash-o"></i></a>
-                                                    }
-                                                    else
-                                                    {*@
-                                                <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
-                                                    <a onclick="DeleteItemConfirm(@item.Id)" class="btn btn-sm btn-icon mr-1 float-left btn-danger" data-toggle="modal" data-target="#delete" title="Delete" s><i class="ri-delete-bin-fill"></i></a>
-                                                </span>
-                                                //}
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                            else
-                            {
-                                <tr>
-                                    <td colspan="4" class="text-center">No Record Found</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
+    <div class="content-body">
+        <section class="row all-contacts">
+            <div class="col-12">
+                <div class="Dashboard-box">
+                    <div class="Dashboard-header">
+                        <div class="d-flex align-items-center">
+                            <h3 class="fs_16 fw_6 card-title-text"><span id="totalRecords">0</span> Total Records</h3>
+                           
+                        </div>
+
+                    </div>
+                    <div class="box-datatable visitor-desk-table">
+                        <table id="Field-table" class="datatables data-tables-filters display nowrap" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Datatype</th>
+                                    <th>Description</th>
+                                    <th class="table-action">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.List != null && ViewBag.List.Count > 0)
+                                {
+                                    @foreach (var item in ViewBag.List)
+                                    {
+
+                                        <tr>
+                                            <td>@item.Name </td>
+                                            <td>@item.Datatype</td>
+
+                                            @{
+                                                string Msg = "";
+                                                if (item.Description != null)
+                                                {
+                                                    if (item.Description.Length >= 50)
+                                                    {
+
+                                                        Msg = item.Description.Substring(0, 50) + "...";
+
+                                                    }
+                                                    else
+                                                    {
+                                                        Msg = item.Description;
+                                                    }
+                                                }
+
+                                            }
+                                            <td>@Msg</td>
+                                            <td>
+                                          
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                                    <a href="/Field/AddField?Id=@item.Id" class="btn btn-sm btn-icon mr-1 float-left btn-info">      <i class="la la-ban"></i> </a>
+                                                    </span>
+                                                   
+                                      
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                                    <a onclick="DeleteItemConfirm(@item.Id)" class="btn btn-sm btn-icon mr-1 float-left btn-danger" data-toggle="modal" data-target="#delete" title="Delete" s>
+                                                        <i class="la la-trash-o"></i>
+                                                    </a>
+                                                    </span>
+                                                    
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center">No Record Found</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
+
 
 <div class="modal fade" id="delete">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Delete Field</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
+            <!-- Modal body -->
             <div class="modal-body">
                 <input type="hidden" id="deleteId" />
                 <div class="text-center">
@@ -140,57 +123,32 @@
                 </div>
             </div>
 
+            <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="add-balance-btn text-right">
-                    <button type="button" class="btn btn-soft-dark" data-bs-dismiss="modal">Close</button>
-                    <button type="button" onclick="DeleteItem()" id="btnDelete" class="btn btn-danger">Delete</button>
+                    <a href="javascript:void(0)" class="softo-solid-btn softo-solid-btn-cancel" data-dismiss="modal">Cancel</a>
+                    <a href="javascript:void(0)" onclick="DeleteItem()" id="btnDelete" class="softo-solid-btn ml-10">Delete</a>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-
-
-<div id="overlay" class="overlay-filter"></div>
-<div class="offcanvas offcanvas-end" id="FilterBoxSlide">
-    <div class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
-        <h5 class="m-0 me-2 text-white">Filter</h5>
-        <button type="button" class="btn-close btn-close-white ms-auto" id="customizerclose-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="FilterBox-wrapper">
-        <div class="form-icon right position-relative mb-3">
-            <input type="text" class="form-control form-select-sm" id="search" name="search" placeholder="Search">
-            <i class="ri-search-line"></i>
-        </div>
-
-    </div>
-    <div class="offcanvas-footer border-top p-3 text-center">
-        <div class="row">
-            <div class="col-6">
-                <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
-            </div>
-            <div class="col-6">
-                <button type="button" id="Filter" class="btn btn-primary w-100">Apply Filter</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 @section Scripts {
-
-  <script src="~/js/custom/field.js"></script>
-
+    <script src="~/js/custom/field.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            table = $('#Field-table').DataTable({
-                'responsive': true,
-                "paging": true,
-                "ordering": true,
-                "info": true,
-                "scroller": true,
-                "select": true,
-            });
+            if (!$.fn.DataTable.isDataTable('#Field-table')) {
+                table = $('#Field-table').dataTable({
+                    'responsive': true,
+                    "paging": true,
+                    "ordering": true,
+                    "info": true,
+                    "scroller": true,
+                    "select": true,
+                });
+            }
         });
     </script>
 }

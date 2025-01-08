@@ -37,7 +37,40 @@ namespace PatelWorld.Controllers
             return View(new Fieldfilter() { });
         }
 
-     
+       
+
+        [HttpPost]
+        public IActionResult GetFieldList()
+        {
+            try
+            {
+                string draw = this.Request.Form["draw"][0];
+                string search = this.Request.Form["search[value]"][0];
+                int startRec = Convert.ToInt32(this.Request.Form["start"][0]);
+                int pageSize = Convert.ToInt32(this.Request.Form["length"][0]);
+                var LabourCost = _fieldRepository.GetAllFiledAdmin((startRec).ToString(), pageSize.ToString(), false, search);
+
+                return this.Json(new
+                {
+                    draw = Convert.ToInt32(draw),
+                    recordsTotal = LabourCost.Count > 0 ? LabourCost.Select(z => z.TOTAL_COUNT).FirstOrDefault() : 0,
+                    recordsFiltered = LabourCost.Count > 0 ? LabourCost.Select(z => z.TOTAL_COUNT).FirstOrDefault() : 0,
+                    data = LabourCost
+                });
+            }
+            catch (Exception EX)
+            {
+                return this.Json(new
+                {
+                    draw = 0,
+                    recordsTotal = 0,
+                    recordsFiltered = 0,
+                    data = new List<FieldsList>()
+                });
+            }
+        }
+
+
         public IActionResult AddField(CommonEditdelete obj)
         {
             bool myAction = MainCheck();

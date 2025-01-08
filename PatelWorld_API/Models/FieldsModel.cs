@@ -37,4 +37,13 @@
 
     }
 
+    public class FieldsList
+    {
+        public int TOTAL_COUNT { get; set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Datatype { get; set; }
+        public string? Description { get; set; }
+    }
+
 }

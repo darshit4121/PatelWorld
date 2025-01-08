@@ -42,60 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (ViewBag.List != null && ViewBag.List.Count > 0)
-                                {
-                                    @foreach (var item in ViewBag.List)
-                                    {
-
-                                        <tr>
-                                            <td>@item.Name </td>
-                                            <td>@item.Datatype</td>
-
-                                            @{
-                                                string Msg = "";
-                                                if (item.Description != null)
-                                                {
-                                                    if (item.Description.Length >= 50)
-                                                    {
-
-                                                        Msg = item.Description.Substring(0, 50) + "...";
-
-                                                    }
-                                                    else
-                                                    {
-                                                        Msg = item.Description;
-                                                    }
-                                                }
-
-                                            }
-                                            <td>@Msg</td>
-                                            <td>
-                                          
-                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
-                                                    <a href="/Field/AddField?Id=@item.Id" class="btn btn-sm btn-icon mr-1 float-left btn-info">      <i class="la la-ban"></i> </a>
-                                                    </span>
-                                                   
-                                      
-                                                    <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
-                                                    <a onclick="DeleteItemConfirm(@item.Id)" class="btn btn-sm btn-icon mr-1 float-left btn-danger" data-toggle="modal" data-target="#delete" title="Delete" s>
-                                                        <i class="la la-trash-o"></i>
-                                                    </a>
-                                                    </span>
-                                                    
-                                                
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                                else
-                                {
-                                    <tr>
-                                        <td colspan="4" class="text-center">No Record Found</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                }
+                             
                             </tbody>
                         </table>
                     </div>
@@ -137,18 +84,5 @@
 
 @section Scripts {
     <script src="~/js/custom/field.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if (!$.fn.DataTable.isDataTable('#Field-table')) {
-                table = $('#Field-table').dataTable({
-                    'responsive': true,
-                    "paging": true,
-                    "ordering": true,
-                    "info": true,
-                    "scroller": true,
-                    "select": true,
-                });
-            }
-        });
-    </script>
+   
 }

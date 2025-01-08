@@ -11,6 +11,7 @@ $(document).ready(function () {
     //    $('.FilterBox-slide, .overlay-filter').removeClass("active");
     //});
 
+    LoadField();
     function searchfilter() {
         table.search($('#search').val()).draw();
     }
@@ -273,5 +274,92 @@ function DeleteFieldOptions(deleteIds) {
         error: function (errormessage) {
             toastr.error(errormessage.responseText.toString(), 'Error');
         }
+    });
+}
+
+
+
+function LoadField() {
+
+    var startDate = $("#startdate").val();
+    var endDate = $("#enddate").val();
+    table = $('#Field-table').DataTable({
+
+        destroy: true,
+        processing: true,
+        serverSide: true,
+        filter: true,
+        orderMulti: true,
+        order: [],
+        responsive: true,
+        scrollCollapse: false,
+        ordering: true,
+        lengthChange: true,
+        paging: true,
+        pagingType: "full_numbers",
+        pageLength: 10,
+        ajax: {
+            url: "/Field/GetFieldList",
+            type: "POST",
+            datatype: "json",
+      
+            dataSrc: function (json) {
+
+                console.log(json);
+                return json.data;
+            }
+        },
+        columns: [
+            {
+                data: "name",
+                title: "Name",
+                render: function (data, type, row) {
+                    return `<a href="#" class="link-table">${data || "N/A"}</a>`;
+                },
+            },
+            {
+                data: "datatype",
+                title: "Datatype",
+                render: function (data, type, row) {
+                    return `${data || "N/A"} <span class="d-inline" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Social record is > 75%" style="position: relative; top: 4px;">
+                                <i class="ri-information-fill good-rec"></i></span>`;
+                },
+            },
+            {
+                data: "description",
+                title: "Description",
+                render: function (data, type, row) {
+                    return `<div>${data || "N/A"}<div style="display:none;">Extra details...</div>
+                                <a href="#" class="more text-decoration-underline">More</a></div>`;
+                },
+            },
+            {
+                data: "id",
+                title: "Actions",
+                render: function (data, type, row) {
+                    return `
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                            <a href="/Field/AddField?Id=${data}" class="btn btn-sm btn-icon mr-1 float-left btn-info">
+                                <i class="la la-ban"></i>
+                            </a>
+                        </span>
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                            <a onclick="DeleteItemConfirm(${data})" class="btn btn-sm btn-icon mr-1 float-left btn-danger" data-toggle="modal" data-target="#delete" title="Delete">
+                                <i class="la la-trash-o"></i>
+                            </a>
+                        </span>
+                    `;
+                },
+            }
+        
+        ],
+    });
+
+    table.on('draw.dt', function () {
+        $('[data-bs-toggle="tooltip"]').tooltip({
+            "html": true
+        });
+
+
     });
 }

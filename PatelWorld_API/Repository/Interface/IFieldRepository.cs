@@ -4,7 +4,7 @@ namespace PatelWorld_API.Repository.Interface
 {
     public interface IFieldRepository
     {
-       
+        List<FieldsList> GetAllFiledAdmin(string Skip, string Take, bool IsExport, string SearchTerm);
         List<TblFields> GetAllFiledAdmin();
         List<TblFieldsOptions> GetAllFieldsOptions();
         CommonResponseModel DeleteField(CommonEditdelete obj);

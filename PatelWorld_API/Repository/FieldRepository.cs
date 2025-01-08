@@ -3,6 +3,7 @@ using PatelWorld_API.Repository.Interface;
 using PatelWorld_API.Uitilities;
 using PatelWorld_API.Utilities;
 using System.Collections.Generic;
+using System.Composition;
 using System.Data;
 using System.IO;
 using System.Reflection;
@@ -16,17 +17,42 @@ namespace PatelWorld_API.Repository
         {
             _configuration = configuration;
         }
-  
-    
-        public List<TblFields> GetAllFiledAdmin()
+
+
+        //public List<TblFields> GetAllFiledAdmin()
+        //{
+        //   List<TblFields> model = new List<TblFields>();
+        //    try
+        //    {
+        //        DBHelper db = new DBHelper(_configuration);
+        //        DataTable dt = db.ExecuteQuery("SELECT * FROM TblFields WITH (NOLOCK) WHERE IsDelete = 0 AND IsActive = 1 ORDER BY Id DESC");
+
+        //        model = CommonMethods.BindList<TblFields>(dt);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //    return model;
+        //}
+
+        public List<FieldsList> GetAllFiledAdmin(string Skip , string Take , bool IsExport , string SearchTerm)
         {
-           List<TblFields> model = new List<TblFields>();
+          
+            List<FieldsList> model = new List<FieldsList>();
             try
             {
+          
                 DBHelper db = new DBHelper(_configuration);
-                DataTable dt = db.ExecuteQuery("SELECT * FROM TblFields WITH (NOLOCK) WHERE IsDelete = 0 AND IsActive = 1 ORDER BY Id DESC");
+                var sqlParameters = new object[] {
+                "@Skip",Skip,
+                "@Take", Take,
+                "@IsExport", IsExport,
+                "@SearchTerm",SearchTerm,
+                };
+                DataTable dt = db.ExecuteProcedure("GetActiveFields", sqlParameters);
+               
 
-                model = CommonMethods.BindList<TblFields>(dt);
+                model = CommonMethods.BindList<FieldsList>(dt);
             }
             catch (Exception ex)
             {

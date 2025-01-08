@@ -22,9 +22,9 @@
             rtl = true;
         }
 
-        setTimeout(function(){
-            $html.removeClass('loading').addClass('loaded');
-        }, 1200);
+        //setTimeout(function(){
+        //    $html.removeClass('loading').addClass('loaded');
+        //}, 1200);
 
         $.app.menu.init(compactMenu);
 

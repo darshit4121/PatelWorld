@@ -11,163 +11,41 @@
     <meta name="author" content="">
     <title>Dashboard</title>
 
-    <link rel="apple-touch-icon" href="~/app-assets/images/favicon-1.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/favicon-1.ico">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="apple-touch-icon" href="~/app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
 
-
-    @*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
-    <link href="~/css/bootstrap-timepicker.css" rel="stylesheet" />
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/vendors.min.css">
-    <!-- END: Vendor CSS-->
-    <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap-extended.css">
-    @*<link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap-extended.min.css">*@
-    <link rel="stylesheet" type="text/css" href="~/app-assets/css/colors.css">
-    @*<link rel="stylesheet" type="text/css" href="~/app-assets/css/components.min.css">*@
+    <!-- <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css"> -->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/components.css">
-    <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
     <!-- END: Page CSS-->
-    <!-- END: Theme CSS-->
-    <!-- BEGIN: Custom CSS-->
-    <link href="~/assets/css/Bootstrap-select2/bootstrap-select.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css">
-    @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">*@
+    <!-- Start: Page CSS-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
-    <link href="~/assets/plugins/css/DataTables/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="~/app-assets/css/plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet" />
-    <link href="~/css/mobilecode/intlTelInput.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="~/asset/plugins/datepicker/bootstrap-datepicker.css" />
-    <link href="~/assets/plugins/css/Croppie/croppie.css" rel="stylesheet" />
-    <link href="~/css/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/plugins/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/assets/plugins/css/DataTables/jquery.dataTables.min.css">
+    <link href="~/assets/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/assets/plugins/css/timepicker/bootstrap-timepicker.css">
+ 
+    <link rel="stylesheet" href="~/assets/css/select2/select2.min.css">
+    <link href="~/assets/datepicker/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/assets/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
     <link href="~/css/toastr.css" rel="stylesheet" />
-    @*<link href="~/asset/css/custom.css" rel="stylesheet" />*@
-    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="~/assets/css/menu.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5E57YNF6QN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <link href="~/assets/css/intlTelInput.css" rel="stylesheet" media="screen">
+    <!-- END: Page CSS-->
+    <!-- BEGIN: Custom CSS-->
+    
+    <link href="~/assets/css/menu.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
 
-        gtag('config', 'G-5E57YNF6QN');
-    </script>
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/jquery-1.10.2.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/toastr.js"></script>
-    <script src="~/js/vendor/modernizr-2.8.1.min.js"></script>
-    <script>
-        (function (w, d, s, u) {
-            w.gbwawc = {
-                url: u,
-                options: {
-                    waId: "+91 8155009000",
-                    siteName: "Visitorz.io",
-                    siteTag: "Available",
-                    siteLogo: "https://waw.gallabox.com/chatbotavatars/2.png",
-                    widgetPosition: "RIGHT",
-                    triggerMessage: "",
-                    welcomeMessage: "Welcome to Visitorz.io",
-                    brandColor: "#25D366",
-                    messageText: "",
-                    replyOptions: ['I would like to chat with sales team', 'I need help in creating a workspace', 'I want to upgrade my plan'],
-                },
-            };
-            var h = d.getElementsByTagName(s)[0],
-                j = d.createElement(s);
-            j.async = true;
-            j.src = u + "/whatsapp-widget.min.js?_=" + Math.random();
-            h.parentNode.insertBefore(j, h);
-        })(window, document, "script", "https://waw.gallabox.com");
-    </script>
-    @*video playes css*@
-
-    <style type="text/css">
-        #preloader {
-            display: flex;
-            justify-content: center;
-            position: fixed;
-            align-items: center;
-            width: 100%;
-            height: 100vh;
-            background-color: rgb(0 0 0 / 83%);
-            z-index: 9999;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            top: 0;
-        }
-
-        #spinner {
-            box-sizing: border-box;
-            stroke: #fff;
-            stroke-width: 3px;
-            transform-origin: 50%;
-            -webkit-animation: line 1.6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite, rotate 1.6s linear infinite;
-        }
-
-        #preloader .wait_text {
-            color: #fff;
-            margin-top: 20px;
-        }
-
-        @@-webkit-keyframes rotate {
-            from {
-                transform: rotate(0)
-            }
-
-            to {
-                transform: rotate(450deg);
-            }
-        }
-
-        @@-webkit-keyframes line {
-            0% {
-                stroke-dasharray: 2, 85.964;
-                transform: rotate(0);
-            }
-
-            50% {
-                stroke-dasharray: 65.973, 21.9911;
-                stroke-dashoffset: 0;
-            }
-
-            100% {
-                stroke-dasharray: 2, 85.964;
-                stroke-dashoffset: -65.973;
-                transform: rotate(90deg);
-            }
-        }
-
-        form .error {
-            color: red;
-            bottom: -18px;
-            font-size: 12px;
-            left: 0;
-            font-weight: 500;
-        }
-
-        #loginPopup .select2-container {
-            width: 100% !important;
-        }
-    </style>
-    <style>
-        .card-header .heading-elements a, .card-header .heading-elements-toggle a {
-            padding: 8px 30px;
-        }
-
-        .main-menu.menu-dark .navigation li a span {
-            display: initial;
-        }
-    </style>
+ 
+    <!-- END: Custom CSS-->
 
 
 
@@ -411,179 +289,52 @@
     </div>
 
 
+    <!-- BEGIN: Vendor JS-->
     <script src="~/app-assets/vendors/js/vendors.min.js"></script>
-
-    <!-- BEGIN Vendor JS-->
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="~/app-assets/vendors/js/charts/chart.min.js"></script>
-    <!-- END: Page Vendor JS-->
-    <!-- BEGIN: Theme JS-->
     <script src="~/app-assets/js/core/app-menu.js"></script>
     <script src="~/app-assets/js/core/app.js"></script>
-    <script src="~/app-assets/js/scripts/owl-carousel/owl.carousel.min.js"></script>
-    <!-- END: Theme JS-->
+    <!-- BEGIN Vendor JS-->
     <!-- BEGIN: Page JS-->
-    <!-- <script src="~/app-assets/js/scripts/charts/chartjs/bar/bar.js"></script> -->
-    <!-- <script src="~/app-assets/js/scripts/charts/chartjs/bar/bar-stacked.js"></script> -->
-    <!-- <script src="~/app-assets/js/scripts/charts/chartjs/bar/bar-multi-axis.js"></script> -->
-    <script src="~/app-assets/js/scripts/charts/chartjs/bar/column.js"></script>
-    <script src="~/app-assets/js/scripts/charts/chartjs/pie-doughnut/pie-simple.js"></script>
 
-    @*<script src="~/app-assets/js/scripts/charts/chartjs/bar/column2.js"></script>*@
-    <script src="~/js/apexcharts.js"></script>
-    @*<script src="~/app-assets/js/scripts/charts/chartjs/pie-doughnut/pie-simple2.js"></script>*@
-    <script src="~/js/moment.min.js"></script>
-    <script src="~/js/daterangepicker.min.js"></script>
-    <!-- <script src="~/app-assets/js/scripts/charts/chartjs/bar/column-stacked.js"></script> -->
-    <!-- <script src="~/app-assets/js/scripts/charts/chartjs/bar/column-multi-axis.js"></script> -->
-    <script src="~/assets/js/scripts.js"></script>
+    <script type="text/javascript" src="~/app-assets/js/scripts/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/js/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/js/timepicker/bootstrap-timepicker.js"></script>
+
+    <script type="text/javascript" src="~/assets/js/select2/select2.min.js"></script>
+
+    <script src="~/assets/js/intlTelInput-jquery.min.js"></script>
+    <script src="~/assets/js/mobilecode/utils.js"></script>
+   
     <!-- END: Page JS-->
-    <script src="~/assets/js/jquery.validate.min.js"></script>
-    <script src="~/assets/js/bootstrap-select2/bootstrap-select.min.js"></script>
-    <script src="~/assets/plugins/js/Sortable.js"></script>
-    @*<script src="~/app-assets/js/core/libraries/jquery_ui/jquery-ui.min.js"></script>*@
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.js"></script>
-    @*<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>*@
-    <script src="~/js/jquery.tablednd.js"></script>
-    <script src="~/js/jquery.table2excel.min.js"></script>
-    <script src="~/asset/plugins/datepicker/bootstrap-datepicker.js"></script>
-    <script src="~/js/bootstrap-timepicker.js"></script>
-    <script src="~/assets/js/tinymce.min.js"></script>
-    <script src="~/ckeditor/ckeditor.js"></script>
-    <script src="~/ckeditor/adapters/jquery.js"></script>
-    <script src="~/app-assets/js/scripts/owl-carousel/owl.carousel.min.js"></script>
-    <script src="~/js/mobilecode/intlTelInput.js"></script>
-    <script src="~/js/mobilecode/intlTelInput.min.js"></script>
-    <script src="~/assets/plugins/js/Croppie/croppie.js"></script>
-    @*<script src="~/js/mobilecode/new/intlTelInput.js"></script>
-    <script src="~/js/mobilecode/new/intlTelInput.min.js"></script>*@
-    @*<script src="~/js/mobilecode/utils.js"></script>*@
-    <script src="~/js/mobilecode/new/utils.js"></script>
-    @*<script src="~/js/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/signalr-user.js"></script>*@
+    <!-- BEGIN: Page JS-->
+    <script src="~/assets/js/scripts.js"></script>
 
-    <script src="~/js/default.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/assets/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/assets/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/toastr.js"></script>
+    @RenderSection("scripts", required: false)
+    <!-- END: Page JS-->
 
     <script>
-
-        $(".select2-multipleselect").select2({
-            maximumselectionlength: 6,
-            container: 'body'
-        });
-        $(document).on('change', '#OwnerId', function () {
-            if ($("#OwnerId").val() != "") {
-                $(this).valid();
-                $.ajax({
-                    url: "/admin/Premises/GetOwnerDetails",
-                    type: "POST",
-                    data: { OwnerId: $("#OwnerId").val() },
-                    success: function (data) {
-                        if (data != null) {
-                            $("#ContactName").val(data.name);
-                            $("#ContactNumber").intlTelInput("setNumber", data.mobile)
-                            //$("#ContactNumber").val(data.mobile);
-                            $("#ContactEmail").val(data.email);
-                        } else {
-
-                        }
-                    },
-                    error: function (errormessage) {
-                        toastr.error(errormessage.responseText.toString(), 'Error');
-                    }
-                });
-            }
-            else {
-                return false;
-            }
-
-        });
-        $(document).on('change', '#PremisesTypeID', function () {
-            if ($("#PremisesTypeID").val() != "") {
-                $(this).valid()
-                if ($("#PremisesTypeID").val() == "2") {
-                    $("#startEndDate").show();
-                }
-                else {
-                    $("#startEndDate").hide();
-                }
-            }
-            else {
-                return false;
-            }
-
-        });
-
-        $(document).on('change', '#CategoryId', function () {
-            var Category = $("#CategoryId").val();
-            if (Category.length == 0) {
-                $("#errNm1").text("Please select any category");
-                return false;
-            }
-            else {
-                $("#errNm1").text("");
-                $("#errNm1").prop('hidden', true);
-            }
-        });
+    
     </script>
-    <script type="text/javascript">
-        var mobileValidation = true;
-        var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-        var telInput = $(".phone")
-        // initialise plugin
-        var a = telInput.intlTelInput({
-            allowExtensions: true,
-            formatOnDisplay: true,
-            autoFormat: true,
-            autoHideDialCode: true,
-            autoPlaceholder: false,
-            defaultCountry: "auto",
-            ipinfoToken: "yolo",
-            nationalMode: false,
-            numberType: "MOBILE",
-            //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-            //preferredCountries: ['sa', 'ae', 'qa','om','bh','kw','ma'],
-            preventInvalidNumbers: true,
-            separateDialCode: true,
-            initialCountry: "auto",
-            geoIpLookup: function (callback) {
-                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
-                    var countryCode = (resp && resp.country) ? resp.country : "in";
-                    callback(countryCode);
-                });
-            },
-            //utilsScript: "~/js/mobilecode/utils.js"
-        });
-        //$("#PhoneNumber").intlTelInput("getNumber", intlTelInputUtils.numberFormat.E164);
-        var reset = function () {
-            telInput.removeClass("error");
-            $(".mobileerror").hide();
-            // validMsg.addClass("hide");
-        };
-        // on blur: validate
-        telInput.blur(function () {
-            reset();
-            if ($.trim(telInput.val())) {
-                if ($(this).intlTelInput("isValidNumber")) {
-                    $(".mobileerror").hide();
-                    mobileValidation = true;
-                    telInput.removeClass("error");
-                    //validMsg.removeClass("hide");
-                } else {
-                    telInput.addClass("error");
-                    telInput.removeClass("error");
-                    $(".mobileerror").show();
-                    var errorCode = $(".phone").intlTelInput("getValidationError");
-                    $(".mobileerror").html(errorMap[errorCode]);
-                    mobileValidation = false;
-                }
-            }
-        });
-        // on keyup / change flag: reset
-        telInput.on("keyup change", reset);
-    </script>
+
     <script>
-        $('.mySelect2').select2({
-            dropdownParent: $('#attendancePopup')
+        $('.single-datepickers').daterangepicker({
+            singleDatePicker: true,
+            opens: 'center'
+        });
+    </script>
+
+    <script>
+        $('.emergency-options-box ul li .Alert-box').click(function () {
+            $(this).toggleClass('active');
         });
     </script>
 </body>

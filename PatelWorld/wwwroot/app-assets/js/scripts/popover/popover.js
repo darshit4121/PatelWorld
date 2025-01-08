@@ -10,9 +10,8 @@
 ==========================================================================================*/
 (function(window, document, $) {
 'use strict';
-	//$('[data-toggle="popover"]').popover();
 	$('[data-toggle="popover"]').popover();
-	
+
 
 	/******************/
 	// Popover events //

@@ -126,7 +126,8 @@ $(document).ready(function () {
             for (var i = 0; i < numberOfRows; i++) {
                 var id = $(data[i]).attr('data-id');
                 var displayorder = i + 1;
-                var value = $($(data[i]).children().children()[0]).attr('data-value');
+                var value = $(data[i]).find('.formlisted-content > p').attr('data-value');
+               // var value = $($(data[i]).children().children()[0]).attr('data-value');
                 fieldoptionsdata.push({ Id: id, Value: value, FieldId: FieldId, DisplayOrder: displayorder });
             }
             var user = {
@@ -218,14 +219,15 @@ function AddSelectedFieldOptions(id) {
                       <div class="formlisted-content">
                     <p class="form-control form-control-icon-right" id="text_` + index + `" data-value="` + input + `">` + input + `</p>
                       </div>
-                    <div class="form-icon-right">
-                       <a href="javascript:void(0);" role="button" class="btn btn-sm btn-icon btn-light greybroder mr-2 editField" data-id="` + index + `">
-                         <i class="ri-pencil-line"></i>
-                        </a>
-                        <a href="javascript:void(0);" role="button" class="btn btn-sm btn-icon btn-light greybroder deleteField" data-id="` + index + `">
-                          <i class="ri-delete-bin-fill"></i>
-                        </a>
-                    </div>
+                    
+                     <div class="table-resource-buttons position-absolute">
+                                                        <a href="javascript:void(0);"  data-id="` + index + `">
+                                                            <svg width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M19.629 8.818l7.553 7.555L9.554 34H2v-7.555L19.629 8.816v.002zM22.146 6.3l3.777-3.779a1.78 1.78 0 012.518 0L33.48 7.56a1.78 1.78 0 010 2.518L29.7 13.854 22.147 6.3z" fill="#281483"></path></svg>
+                                                        </a>
+                                                        <a href="javascript:void(0);"  data-id="` + index + `">
+                                                            <svg width="16" height="16" data-name="Layer 1" viewBox="0 0 18.33 22.42" xmlns="http://www.w3.org/2000/svg"><path d="M31.45,42V36.34a1,1,0,0,1,2-.17V47.44a2,2,0,0,0,2,2.05h8.12a2,2,0,0,0,2.05-2.05V36.34a1,1,0,0,1,.81-1.09,1,1,0,0,1,1.21.83,1.83,1.83,0,0,1,0,.33V47.47a4,4,0,0,1-3.33,4,4.37,4.37,0,0,1-.72.06H35.49a4,4,0,0,1-4-4Z" transform="translate(-30.43 -29.11)" fill="#281483"></path><path d="M43.67,32.17h.72c1.1,0,2.2,0,3.3,0a1,1,0,0,1,1,1.31,1,1,0,0,1-.89.73H31.54a1,1,0,1,1,0-2h4v-2a1,1,0,0,1,1.06-1.07h6a1,1,0,0,1,1.07,1.07Zm-6.1,0h4v-1h-4Z" transform="translate(-30.43 -29.11)" fill="#281483"></path><path d="M36.54,41.82c0-1.18,0-2.37,0-3.55a1,1,0,0,1,.83-1,1,1,0,0,1,1.1.58,1.25,1.25,0,0,1,.1.51q0,3.48,0,7a1,1,0,0,1-1,1.1,1,1,0,0,1-1-1.1Z" transform="translate(-30.43 -29.11)" fill="#281483"></path><path d="M42.65,41.85c0,1.19,0,2.37,0,3.56a1,1,0,0,1-1.88.53,1.36,1.36,0,0,1-.15-.59q0-3.51,0-7a1,1,0,1,1,2,0C42.66,39.52,42.65,40.68,42.65,41.85Z" transform="translate(-30.43 -29.11)" fill="#281483"></path></svg>
+                                                        </a>
+                                                    </div>
                 </div>`;
 
             $("#FieldsDisplay").append(html);
@@ -304,7 +306,7 @@ function LoadField() {
             datatype: "json",
       
             dataSrc: function (json) {
-
+                $("#totalRecords").text(json.recordsTotal);
                 console.log(json);
                 return json.data;
             }
@@ -321,16 +323,14 @@ function LoadField() {
                 data: "datatype",
                 title: "Datatype",
                 render: function (data, type, row) {
-                    return `${data || "N/A"} <span class="d-inline" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Social record is > 75%" style="position: relative; top: 4px;">
-                                <i class="ri-information-fill good-rec"></i></span>`;
+                    return `${data || "N/A"} </span>`;
                 },
             },
             {
                 data: "description",
                 title: "Description",
                 render: function (data, type, row) {
-                    return `<div>${data || "N/A"}<div style="display:none;">Extra details...</div>
-                                <a href="#" class="more text-decoration-underline">More</a></div>`;
+                    return `<div>${data || "N/A"}</div>`;
                 },
             },
             {
@@ -340,12 +340,19 @@ function LoadField() {
                     return `
                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
                             <a href="/Field/AddField?Id=${data}" class="btn btn-sm btn-icon mr-1 float-left btn-info">
-                                <i class="la la-ban"></i>
+                                <svg width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.629 8.818l7.553 7.555L9.554 34H2v-7.555L19.629 8.816v.002zM22.146 6.3l3.777-3.779a1.78 1.78 0 012.518 0L33.48 7.56a1.78 1.78 0 010 2.518L29.7 13.854 22.147 6.3z" fill="#281483"></path>
+        </svg>
                             </a>
                         </span>
                         <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
                             <a onclick="DeleteItemConfirm(${data})" class="btn btn-sm btn-icon mr-1 float-left btn-danger" data-toggle="modal" data-target="#delete" title="Delete">
-                                <i class="la la-trash-o"></i>
+                                <svg width="16" height="16" viewBox="0 0 18.33 22.42" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31.45,42V36.34a1,1,0,0,1,2-.17V47.44a2,2,0,0,0,2,2.05h8.12a2,2,0,0,0,2.05-2.05V36.34a1,1,0,0,1,.81-1.09,1,1,0,0,1,1.21.83,1.83,1.83,0,0,1,0,.33V47.47a4,4,0,0,1-3.33,4,4.37,4.37,0,0,1-.72.06H35.49a4,4,0,0,1-4-4Z" transform="translate(-30.43 -29.11)" fill="#281483"></path>
+            <path d="M43.67,32.17h.72c1.1,0,2.2,0,3.3,0a1,1,0,0,1,1,1.31,1,1,0,0,1-.89.73H31.54a1,1,0,1,1,0-2h4v-2a1,1,0,0,1,1.06-1.07h6a1,1,0,0,1,1.07,1.07Zm-6.1,0h4v-1h-4Z" transform="translate(-30.43 -29.11)" fill="#281483"></path>
+            <path d="M36.54,41.82c0-1.18,0-2.37,0-3.55a1,1,0,0,1,.83-1,1,1,0,0,1,1.1.58,1.25,1.25,0,0,1,.1.51q0,3.48,0,7a1,1,0,0,1-1,1.1,1,1,0,0,1-1-1.1Z" transform="translate(-30.43 -29.11)" fill="#281483"></path>
+            <path d="M42.65,41.85c0,1.19,0,2.37,0,3.56a1,1,0,0,1-1.88.53,1.36,1.36,0,0,1-.15-.59q0-3.51,0-7a1,1,0,1,1,2,0C42.66,39.52,42.65,40.68,42.65,41.85Z" transform="translate(-30.43 -29.11)" fill="#281483"></path>
+        </svg>
                             </a>
                         </span>
                     `;

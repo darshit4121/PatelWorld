@@ -19,21 +19,21 @@ namespace PatelWorld_API.Repository
         }
 
 
-        //public List<TblFields> GetAllFiledAdmin()
-        //{
-        //   List<TblFields> model = new List<TblFields>();
-        //    try
-        //    {
-        //        DBHelper db = new DBHelper(_configuration);
-        //        DataTable dt = db.ExecuteQuery("SELECT * FROM TblFields WITH (NOLOCK) WHERE IsDelete = 0 AND IsActive = 1 ORDER BY Id DESC");
+        public List<TblFields> GetAllFiledAdmin()
+        {
+            List<TblFields> model = new List<TblFields>();
+            try
+            {
+                DBHelper db = new DBHelper(_configuration);
+                DataTable dt = db.ExecuteQuery("SELECT * FROM TblFields WITH (NOLOCK) WHERE IsDelete = 0 AND IsActive = 1 ORDER BY Id DESC");
 
-        //        model = CommonMethods.BindList<TblFields>(dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-        //    return model;
-        //}
+                model = CommonMethods.BindList<TblFields>(dt);
+            }
+            catch (Exception ex)
+            {
+            }
+            return model;
+        }
 
         public List<FieldsList> GetAllFiledAdmin(string Skip , string Take , bool IsExport , string SearchTerm)
         {
